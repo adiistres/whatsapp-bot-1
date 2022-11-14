@@ -6,7 +6,7 @@ const figlet = require('figlet')
 const fs = require('fs-extra')
 const ms = require('parse-ms')
 const HandleMsg = require('./HandleMsg')
-const StickerMetadata = { author: 'made with luv', pack: '@thoriqazzikraa', keepScale: true }
+const StickerMetadata = { author: 'made with luv', pack: 'renzzmeme', keepScale: true }
 const errorpicture = 'https://i.ibb.co/fxY3Hbp/Whats-App-Image-2021-11-24-at-15-39-01.jpg'
 const uaOverride = process.env.UserAgent
 const botnum = '6289520360716@c.us'
@@ -17,10 +17,10 @@ const sleep = async (ms) => {
 
 const start = async (urbae = new urbae()) => {
 	console.log(color('------------------------------------------------------------------------', 'white'))
-	console.log(color(figlet.textSync('Urbaeexyz Bot', { font: 'Ghost', horizontalLayout: 'default' })))
+	console.log(color(figlet.textSync('renzbot', { font: 'Ghost', horizontalLayout: 'default' })))
 	console.log(color('------------------------------------------------------------------------', 'white'))
-	console.log(color('[CREATOR]', 'aqua'), color('Thoriq Azzikra', 'magenta'))
-	console.log(color('[BOT]', 'aqua'), color('URBAE BOT is now Online!', 'magenta'))
+	console.log(color('[CREATOR]', 'aqua'), color('renzzmeme', 'magenta'))
+	console.log(color('[BOT]', 'aqua'), color('BOT is now Online!', 'magenta'))
 	console.log(color('[VER]', 'aqua'), color('2.12.0', 'magenta'))
 	urbae.onStateChanged((state) => {
 		console.log(color('-> [STATE]'), state)
@@ -34,18 +34,18 @@ const start = async (urbae = new urbae()) => {
 		const left = JSON.parse(fs.readFileSync('./lib/database/left.json'))
 		const isLeft = left.includes(message.from)
 		if (message.isGroupMsg == true && message.isNotification == true && message.subtype == 'description') {
-			await urbae.sendTextWithMentions(message.from, `Deskripsi grup telah diubah oleh admin @${message.sender.id.split('@')[0]}\nDeskripsi baru:\n${message.body}`)
+			await urbae.sendTextWithMentions(message.from, `deskripsi grup telah diubah oleh admin @${message.sender.id.split('@')[0]}\nDeskripsi baru:\n${message.body}`)
 		} else if (message.isGroupMsg == true && message.isNotification == true && message.subtype == 'subject') {
-			await urbae.sendTextWithMentions(message.from, `Nama grup telah diubah oleh admin @${message.sender.id.split('@')[0]} menjadi *${message.body}*`)
+			await urbae.sendTextWithMentions(message.from, `nama grup telah diubah oleh admin @${message.sender.id.split('@')[0]} menjadi *${message.body}*`)
 		} else if (message.isGroupMsg == true && message.isNotification == true && message.subtype == 'picture') {
-			if (message.body == 'remove') return await urbae.sendTextWithMentions(message.from, `Profil grup telah dihapus oleh admin grup @${message.sender.id.split('@')[0]}`)
-			if (message.body == 'set') return await urbae.sendTextWithMentions(message.from, `Profil grup telah diubah oleh admin grup @${message.sender.id.split('@')[0]}`)
+			if (message.body == 'remove') return await urbae.sendTextWithMentions(message.from, `profil grup telah dihapus oleh admin grup @${message.sender.id.split('@')[0]}`)
+			if (message.body == 'set') return await urbae.sendTextWithMentions(message.from, `profil grup telah diubah oleh admin grup @${message.sender.id.split('@')[0]}`)
 		} else if (message.isGroupMsg == true && message.isNotification == true && message.subtype == 'promote') {
-			await urbae.sendTextWithMentions(message.from, `Terdeteksi jabatan @${message.recipients[0].split('@')[0]} telah dinaikan menjadi admin oleh @${message.sender.id.split('@')[0]}`)
+			await urbae.sendTextWithMentions(message.from, `terdeteksi jabatan @${message.recipients[0].split('@')[0]} telah dinaikan menjadi admin oleh @${message.sender.id.split('@')[0]}`)
 		} else if (message.isGroupMsg == true && message.isNotification == true && message.subtype == 'demote') {
-			await urbae.sendTextWithMentions(message.from, `Terdeteksi jabatan @${message.recipients[0].split('@')[0]} menjadi member oleh @${message.sender.id.split('@')[0]}`)
+			await urbae.sendTextWithMentions(message.from, `terdeteksi jabatan @${message.recipients[0].split('@')[0]} menjadi member oleh @${message.sender.id.split('@')[0]}`)
 		} else if (message.isGroupMsg == true && message.isNotification == true && message.subtype == 'revoke_invite') {
-			await urbae.sendTextWithMentions(message.from, `Link Grup telah direset oleh admin @${message.sender.id.split('@')[0]}`)
+			await urbae.sendTextWithMentions(message.from, `link Grup telah direset oleh admin @${message.sender.id.split('@')[0]}`)
 		} else if (message.isGroupMsg == true && message.isNotification == true && message.subtype == 'add' && !botnum.includes(message.recipients) && isWelcome) {
 			const mediaData = await urbae.getProfilePicFromServer(message.recipients)
 			if (mediaData == null || mediaData == undefined || mediaData == 'ERROR: 404' || mediaData == 'ERROR: 401') {
@@ -53,7 +53,7 @@ const start = async (urbae = new urbae()) => {
 			} else {
 				var picture = mediaData
 			}
-			await urbae.sendFileFromUrl(message.from, picture, '', `Halo @${message.recipients[0].split('@')[0]}\nSelamat datang di Grup *${message.chat.formattedTitle}*\nAnda telah dimasukkan oleh @${message.sender.id.split('@')[0]}\n\nDeskripsi Grup: {\n\n${message.chat.groupMetadata.desc}\n\n}`)
+			await urbae.sendFileFromUrl(message.from, picture, '', `Halo @${message.recipients[0].split('@')[0]}\nSelamat datang di Grup *${message.chat.formattedTitle}*\n\n\nDeskripsi Grup: {\n\n${message.chat.groupMetadata.desc}\n\n}`)
 		} else if (message.isGroupMsg == true && message.isNotification == true && message.subtype == 'remove' && !botnum.includes(message.recipients) && isLeft) {
 			const mediaData = await urbae.getProfilePicFromServer(message.recipients)
 			if (mediaData == null || mediaData == undefined || mediaData == 'ERROR: 404' || mediaData == 'ERROR: 401') {
@@ -141,3 +141,4 @@ const start = async (urbae = new urbae()) => {
 create(options(start))
 	.then((urbae) => start(urbae))
 	.catch((err) => console.error(err))
+``

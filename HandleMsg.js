@@ -312,7 +312,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 		const StickerMetadatacrop = { author: authorstc, pack: packstc, keepScale: false }
 
 		// [IDENTIFY]
-		const ownerNumber = "62895334951166@c.us"
+		const ownerNumber = "60199782326@c.us"
 		const errorImg = "https://i.ibb.co/DYLd6fk/baukrysie.jpg"
 		const isOwnerBot = ownerNumber.includes(pengirim)
 		const isOwner = ownerNumber.includes(pengirim)
@@ -414,29 +414,29 @@ module.exports = HandleMsg = async (urbae, message) => {
 		}
 
 		const mess = {
-			grouponly: 'Fitur ini hanya bisa digunakan didalam Grup!',
-			restmes: 'Rest API sedang error',
-			sendfileaudio: '*_Tunggu sebentar, audio sedang dikirim_*',
-			sendfilevideo: '*_Tunggu sebentar, video sedang dikirim_*',
-			wait: '_Waitt, lemme process this shit_',
-			nsfwnoton: 'Fitur NSFW belum aktif pada chat ini',
-			nsfwalready: 'Fitur NSFW sudah aktif sebelumnya di grup ini',
-			nsfwoff: 'Fitur NSFW berhasil dimatikan',
-			nsfwon: 'Fitur NSFW berhasil diaktifkan',
-			prem: `Premium only`,
+			grouponly: 'fitur ini hanya bisa digunakan didalam grup!',
+			restmes: 'rest API sedang error',
+			sendfileaudio: '*_tunggu sebentar, audio sedang dikirim_*',
+			sendfilevideo: '*_tunggu sebentar, video sedang dikirim_*',
+			wait: '_sabar broo..._',
+			nsfwnoton: 'fitur NSFW belum aktif pada chat ini',
+			nsfwalready: 'fitur NSFW sudah aktif sebelumnya di grup ini',
+			nsfwoff: 'fitur NSFW berhasil dimatikan',
+			nsfwon: 'fitur NSFW berhasil diaktifkan',
+			prem: `premium only`,
 			error: {
-				St: `[❗] Kirim gambar dengan caption *${prefix}sticker* atau tag gambar yang sudah dikirim`,
-				Ti: `[❗] Replay sticker dengan caption *${prefix}stickertoimg* atau tag sticker yang sudah dikirim`,
-				Qm: '[❗] Terjadi kesalahan, mungkin themenya tidak tersedia!',
-				Yt3: '[❗] Terjadi kesalahan, tidak dapat meng konversi ke mp3!',
-				Yt4: '[❗] Terjadi kesalahan, mungkin error di sebabkan oleh sistem.',
-				Ig: '[❗] Terjadi kesalahan, mungkin karena akunnya private',
-				Ki: '[❗] Bot tidak bisa mengeluarkan Admin group!',
-				Sp: '[❗] Bot tidak bisa mengeluarkan Admin',
-				Ow: '[❗] Bot tidak bisa mengeluarkan Owner',
-				Bk: '[❗] Bot tidak bisa memblockir Owner',
-				Ad: '[❗] Tidak dapat menambahkan target, mungkin karena di private',
-				Iv: '[❗] Link yang anda kirim tidak valid!'
+				St: `[❗] kirim gambar dengan caption *${prefix}sticker* atau tag gambar yang sudah dikirim`,
+				Ti: `[❗] reply sticker dengan caption *${prefix}stickertoimg* atau tag sticker yang sudah dikirim`,
+				Qm: '[❗] terjadi kesalahan, mungkin themenya tidak tersedia!',
+				Yt3: '[❗] terjadi kesalahan, tidak dapat meng konversi ke mp3!',
+				Yt4: '[❗] terjadi kesalahan, mungkin error di sebabkan oleh sistem.',
+				Ig: '[❗] terjadi kesalahan, mungkin karena akunnya private',
+				Ki: '[❗] bot tidak bisa mengeluarkan Admin group!',
+				Sp: '[❗] bot tidak bisa mengeluarkan Admin',
+				Ow: '[❗] bot tidak bisa mengeluarkan Owner',
+				Bk: '[❗] bot tidak bisa memblockir Owner',
+				Ad: '[❗] tidak dapat menambahkan target, mungkin karena di private',
+				Iv: '[❗] link yang anda kirim tidak valid!'
 			}
 		}
 
@@ -484,7 +484,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 					const getId = getAfkId(ment)
 					const getReason = getAfkReason(getId)
 					const getTime = getAfkTime(getId)
-					await urbae.reply(from, `*「AFK MODE 」*\n\nSssttt! Orangnya lagi afk, jangan diganggu!\n- Alasan: ${getReason}\n- Sejak: _${prettyms(Date.now() - getTime, { verbose: true })}_`, id)
+					await urbae.reply(from, `*「 AFK MODE 」*\n\norangnya lagi afk, jangan diganggu!\n- alasan: ${getReason}\n- sejak: _${prettyms(Date.now() - getTime, { verbose: true })}_`, id)
 					urbae.sendText(getId, `Seseorang telah men-tag anda dari *${message.sender.pushname} di ${message.chat.formattedTitle}*\nPesan: *${message.body}*`)
 				}
 			}
@@ -493,7 +493,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 					const getId = getAfkId(message.quotedMsg.sender.id)
 					const getReason = getAfkReason(getId)
 					const getTime = getAfkTime(getId)
-					urbae.reply(from, `*「AFK MODE 」*\n\nSssttt! Orangnya lagi afk, jangan diganggu!\n- Alasan ${getReason}\n- Sejak: _${prettyms(Date.now() - getTime, { verbose: true })}_`, id)
+					urbae.reply(from, `*「 AFK MODE 」*\n\norangnya lagi afk, jangan diganggu!\n- Alasan ${getReason}\n- Sejak: _${prettyms(Date.now() - getTime, { verbose: true })}_`, id)
 					await urbae.sendText(getId, `Seseorang telah men-tag anda di *${message.chat.formattedTitle}* oleh *${message.sender.pushname}\nPesan: *${message.body}*`)
 				}
 			}
@@ -503,7 +503,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 				_afk.splice(getAfkPosition(sender.id, _afk), 1)
 				fs.writeFileSync('./lib/database/afk.json', JSON.stringify(_afk))
 				sleep(3000)
-				urbae.reply(from, `Kamu telah berhenti dari Afk selama ${prettyms(Date.now() - getTime, { verbose: true })}`, id)
+				urbae.reply(from, `kamu telah berhenti dari afk selama ${prettyms(Date.now() - getTime, { verbose: true })}`, id)
 			}
 		}
 
@@ -516,7 +516,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 				if (!check) {
 					return
 				} else {
-					urbae.reply(from, '*[GROUP LINK DETECTOR]*\nKamu mengirimkan link grup chat, maaf kamu di kick dari grup :(', id).then(() => {
+					urbae.reply(from, '*[GROUP LINK DETECTOR]*\nkamu mengirimkan link grup chat, maaf kamu di kick dari grup :(', id).then(() => {
 						urbae.removeParticipant(groupId, sender.id)
 					})
 				}
@@ -544,7 +544,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 
 		if (isGroupMsg && isVirtexOn && isBotGroupAdmins && message.type == 'chat') {
 			try {
-				if (chats.length >= 50000) {
+				if (chats.length >= 50000000000000) {
 					urbae.deleteMessage(from, message.id, false)
 					urbae.removeParticipant(groupId, sender.id)
 					console.log(`Berhasil mengeluarkan ${pushname} dengan jumlah text ${chats.length}`)
@@ -644,7 +644,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 			console.log(color('[BAN]', 'red'), color(moment(t * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`, 'aqua'), 'from', color(pushname, 'magenta'), 'in', color(name || formattedTitle, 'aqua'))
 		}
 		if (isBanned && isCmd) {
-			return urbae.reply(from, `Maaf *_${pushname}_* anda telah dibanned untuk menggunakan command Bot!`, id)
+			return urbae.reply(from, `maaf *_${pushname}_* anda telah dibanned untuk menggunakan command renzbot!`, id)
 		}
 
 		// Filter Blocked People
@@ -779,7 +779,7 @@ module.exports = HandleMsg = async (urbae, message) => {
 					await urbae.reply(from, menus, id)
 					break
 				case prefix + 'help':
-					const bots = `Hi ${pushname}, this is Urbae Bot, to find out the commands menu, type *${prefix}menu* , *${prefix}p*`
+					const bots = `hi ${pushname}, silahkan ketik .menu`
 					await urbae.reply(from, bots, id)
 					break
 				case prefix + 'runtime':
@@ -804,11 +804,11 @@ module.exports = HandleMsg = async (urbae, message) => {
 					const jame = moment(t * 1000).format('HH:mm:ss')
 					const pictrand = menupict
 					urbae.sendFileFromUrl(from, pictrand, '', menuId.help(prefix, jame, betime, prem, blockNumber, banned, hit, cts, waver), id)
-						.then(() => ((isGroupMsg) && (isGroupAdmins)) ? urbae.reply(from, `Menu Admin Grup: *${prefix}menuadmin*`, id) : null)
+						.then(() => ((isGroupMsg) && (isGroupAdmins)) ? urbae.reply(from, `admin group menu: *${prefix}menuadmin*`, id) : null)
 					break
 				case prefix + 'menuadmin':
-					if (!isGroupMsg) return urbae.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
-					if (!isGroupAdmins) return urbae.reply(from, 'Gagal, inget lu itu Member bukan Admin', id)
+					if (!isGroupMsg) return urbae.reply(from, 'perintah ini hanya dapat dipakai didalam grup!', id)
+					if (!isGroupAdmins) return urbae.reply(from, 'inget lu itu Member bukan Admin', id)
 					const php4 = menupict
 					await urbae.sendFileFromUrl(from, php4, 'image.jpg', menuId.admin(prefix), id)
 					break
